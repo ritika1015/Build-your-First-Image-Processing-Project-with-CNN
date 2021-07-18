@@ -1,0 +1,17 @@
+
+from sklearn.metrics import accuracy_score
+test = pd.read_csv("gtsrb-german-traffic-sign/Test.csv")
+test_labels = test['ClassId'].values
+test_img_path = "../input/gtsrb-german-traffic-sign"
+test_imgs = test['Path'].values
+test_data = []
+test_labels = []
+for img in test_imgs:
+    im = Image.open(test_img_path + '/' + img)
+    im = im.resize((30,30))
+    im = np.array(im)
+    test_data.append(im)
+test_data = np.array(test_data)
+predictions = model.predict_classes(test_data)
+print("accuracy: ", accuracy_score(test_labels, predictions))
+
