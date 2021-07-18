@@ -1,0 +1,35 @@
+##Load Dataset
+
+!pip install tensorflow
+!pip install keras
+!pip install scikit-learn
+
+
+##Import the libraries
+
+import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from PIL import Image
+import tensorflow as tf
+from keras.utils import to_categorical
+from keras.layers import Conv2D, Dense, Flatten, MaxPool2D, Dropout
+
+
+imgs_path = "GTSRB_dataset/Train"
+data = []
+labels = []
+classes = 43
+for i in range(classes):
+    img_path = os.path.join(imgs_path, str(i)) #0-42
+    for img in os.listdir(img_path):
+        im = Image.open(p + '/' + img)
+        im = im.resize((30,30))
+        im = np.array(im)
+        data.append(im)
+        labels.append(i)
+data = np.array(data)
+labels = np.array(labels)
+print("success")
+
