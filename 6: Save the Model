@@ -1,0 +1,4 @@
+##Save the model for future use as well, we will use the dump model to create a GUI for Traffic Classification Project.
+
+model.save('traffic_classifier.h5')
+
