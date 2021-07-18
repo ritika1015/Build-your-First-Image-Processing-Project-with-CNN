@@ -1,3 +1,25 @@
 
 model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 
+
+epochs = 15
+history = model.fit(x_train, y_train, epochs=epochs, batch_size=64, validation_data=(x_test, y_test))
+
+##Now let us plot an accuracy and loss graph using Matplotlib.
+
+plt.figure(0)
+plt.plot(history.history['accuracy'], label="Training accuracy")
+plt.plot(history.history['val_accuracy'], label="val accuracy")
+plt.title("Accuracy")
+plt.xlabel("epochs")
+plt.ylabel("accuracy")
+plt.legend()
+plt.figure(1)
+plt.plot(history.history['loss'], label="training loss")
+plt.plot(history.history['val_loss'], label="val loss")
+plt.title("Loss")
+plt.xlabel("epochs")
+plt.ylabel("Loss")
+plt.legend()
+plt.show()
+
